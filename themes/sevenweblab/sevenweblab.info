@@ -1,0 +1,5 @@
+name	   = Seven subtheme for weblab
+core       = 7.x
+base theme = seven
+
+stylesheets[all][] = sevenweblab.css

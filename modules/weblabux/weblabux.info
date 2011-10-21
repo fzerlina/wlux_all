@@ -1,0 +1,8 @@
+; $Id$
+name = Weblabux
+description = A series of block modules to support WebLabUX functions
+package = WebLabUX
+core = 7.x
+dependencies[] = book
+files[] = weblabux.install
+files[] = weblabux.module

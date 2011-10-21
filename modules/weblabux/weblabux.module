@@ -1,0 +1,128 @@
+<?php
+// $Id$
+
+/*This is where you build the form. You can call this anywhere
+within the module that needs to have a form built.
+This will generate an html form when called.*/
+function weblabux_notepadform($form_state) {
+	$form['note'] = array(
+		'#type' => 'textarea',
+		'#title' => t('Note'),
+		'#rows' => 3,
+		//'#size' => 30,
+		//'#description' => t('note'),
+		'#required' => TRUE,
+	);
+
+	$form['submit'] = array(
+		'#type' => 'submit',
+		'#value' => t('Add Note'),
+	);
+	return $form;
+}
+
+/*This method tells the form what to do when it is submitted.
+$user - you need to call this in order to access the Drupal user data.
+	Since this is a global, make the call in the method used only.
+
+$profile - utilizing the optional core module, Profiles.
+	Profiles allows someone with a username to provide more information,
+	such as their first an dlast name and other information.
+
+$cleanComment - we use htmlspecialchars to prevent injection attacks
+	from the comment entry.
+*/
+function weblabux_notepadform_submit($form, &$form_state) {
+	global $user;
+	$username = $user->name;
+	//$profile =  profile_load_profile($user);
+	//$fname = $user->profile_fname;
+	
+	//$cleanComment = htmlspecialchars($form_state['values']['note']);
+	$cleanComment = check_plain($form_state['values']['note']);
+
+	//db_query('INSERT INTO {weblabux_notepad} (name, comment) VALUES ("%s", "%s")', "TESTfname", $cleanComment);
+	
+	db_insert('weblabux_notepad') // Table name no longer needs {} curly braces
+	->fields(array(
+	  'name' => $username,
+	  'timestamp' => time(),
+	  'comment' => $cleanComment,
+	))
+	->execute();
+}
+
+function weblabux_block_info() {
+	$blocks['weblabux_notepad'] = array(
+		'info'		=> t('WebLabUX Notepad'),
+	);
+	
+	$blocks['weblabux_footer'] = array(
+		'info'		=> t('WebLabUX Footer'),
+		'cache'		=> DRUPAL_CACHE_GLOBAL
+	);
+	
+	$blocks['weblabux_dataview'] = array(
+		'info'		=> t('WebLabUX Data Viewer'),
+	);
+	
+	return $blocks;
+}
+
+function weblabux_block_view($delta = '') {
+	$block = array();
+
+	switch($delta) {
+		case 'weblabux_notepad':
+			/*
+			$block['subject'] = t('X-Study Notepad');
+			
+			$sql = "SELECT name, timestamp, comment FROM {weblabux_notepad} ORDER BY timestamp DESC";
+			$result = db_query($sql);
+			$notepad_entries="";
+			foreach($result as $record) {
+				$notepad_entries .= '<div style="border: 1px solid black; margin-bottom: 5px;"><strong>'
+								. $record->name
+								. "</strong> | "
+								. date("G:i A", $record->timestamp)
+								." | "
+								. date("m-d-Y", $record->timestamp)
+								. "<br />"
+								. $record->comment
+								."</div>";
+			}
+			
+			$block['content'] = render(drupal_get_form('weblabux_notepadform')) . "<span style='font-size: 12px;'>" . $notepad_entries . "</span>";
+			break;
+			*/
+		case 'weblabux_footer':
+			$block['content'] = "&copy; University of Washington - <a href=\"http://depts.washington.edu/ibuxl/web\">Internet-Based User Experience Lab</a>";
+			break;
+			
+		case 'weblabux_dataview':
+			/*
+			$sql = "SELECT * FROM {weblabux_studysessions} ORDER BY enddate DESC";
+			$result = db_query($sql);
+			$sessions = "<table><tr><th>Session</th><th>Start Date</th><th>Start End</th><th>Active</th><th>Abandoned</th><th>Completed</th></tr>";
+			$count = 0;
+			$class;
+		
+			foreach($result as $session) {
+				if($count % 2 == 1) {
+					$class = "even";
+				} else {
+					$class = "";
+				}
+				$count++;
+				$sessions .= "<tr class=" . $class ."><td>" . $session->studyid . "</td><td>" . date("h:i A m-d-Y",$session->startdate) . "</td><td>" . date("h:i A m-d-Y",$session->enddate) . "</td><td>" . $session->active . "</td><td>" . $session->abandoned . "</td><td>" . $session->completed . "</td></tr>";
+			}
+		
+			$sessions .= "</table>";
+		
+			$block['content'] = $sessions;//"<img src=\"/d7rc4/sites/all/themes/newtestseven/summary.jpg\" />";
+			break;
+			*/
+	}
+	
+	return $block;
+}

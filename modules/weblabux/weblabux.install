@@ -1,0 +1,747 @@
+<?php
+
+function weblabux_schema() {
+	$schema['weblabux_incentives'] = array(
+	  'description' => 'TODO: please describe this table!',
+	  'fields' => array(
+		'id' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'serial',
+		  'not null' => TRUE,
+		),
+		'session_id' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'int',
+		  'size' => 'big',
+		  'not null' => TRUE,
+		),
+		'email' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'varchar',
+		  'length' => '255',
+		  'not null' => TRUE,
+		),
+		'meta' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'varchar',
+		  'length' => '255',
+		  'not null' => TRUE,
+		),
+	  ),
+	  'primary key' => array('id'),
+	);
+
+	$schema['weblabux_independent_variables'] = array(
+	  'description' => 'TODO: please describe this table!',
+	  'fields' => array(
+		'id' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'serial',
+		  'not null' => TRUE,
+		),
+		'study_id' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'int',
+		  'not null' => TRUE,
+		),
+		'name' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'varchar',
+		  'length' => '255',
+		  'not null' => TRUE,
+		),
+		'description' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'varchar',
+		  'length' => '255',
+		  'not null' => TRUE,
+		),
+	  ),
+	  'primary key' => array('id'),
+	);
+
+	$schema['weblabux_instances'] = array(
+	  'description' => 'TODO: please describe this table!',
+	  'fields' => array(
+		'id' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'serial',
+		  'not null' => TRUE,
+		),
+		'study_id' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'int',
+		  'not null' => TRUE,
+		),
+		'start_time' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'int',
+		  'not null' => TRUE,
+		),
+		'stop_time' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'int',
+		  'not null' => FALSE,
+		),
+		'announce_time' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'int',
+		  'not null' => FALSE,
+		),
+		'reminder_time' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'int',
+		  'not null' => FALSE,
+		),
+		'status' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'int',
+		  'size' => 'tiny',
+		  'not null' => TRUE,
+		),
+		'mailing_list_email' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'varchar',
+		  'length' => '255',
+		  'not null' => FALSE,
+		),
+		'announce_email_subject' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'varchar',
+		  'length' => '255',
+		  'not null' => FALSE,
+		),
+		'announce_email_text' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'varchar',
+		  'length' => '255',
+		  'not null' => FALSE,
+		),
+		'remainder_email_subject' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'varchar',
+		  'length' => '255',
+		  'not null' => FALSE,
+		),
+		'remainder_email_time' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'varchar',
+		  'length' => '255',
+		  'not null' => FALSE,
+		),
+		'description' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'varchar',
+		  'length' => '255',
+		  'not null' => FALSE,
+		),
+	  ),
+	  'primary key' => array('id'),
+	);
+
+	$schema['weblabux_iv_levels'] = array(
+	  'description' => 'TODO: please describe this table!',
+	  'fields' => array(
+		'id' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'serial',
+		  'not null' => TRUE,
+		),
+		'independent_variable_id' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'int',
+		  'not null' => TRUE,
+		),
+		'name' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'varchar',
+		  'length' => '255',
+		  'not null' => TRUE,
+		),
+		'description' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'varchar',
+		  'length' => '255',
+		  'not null' => TRUE,
+		),
+		'url' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'varchar',
+		  'length' => '2048',
+		  'not null' => TRUE,
+		),
+	  ),
+	  'primary key' => array('id'),
+	);
+
+	$schema['weblabux_measured_variables'] = array(
+	  'description' => 'TODO: please describe this table!',
+	  'fields' => array(
+		'id' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'int',
+		  'not null' => TRUE,
+		),
+		'study_id' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'int',
+		  'not null' => TRUE,
+		),
+		'kind' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'int',
+		  'size' => 'tiny',
+		  'not null' => TRUE,
+		),
+		'webform_measured_variable_id' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'int',
+		  'not null' => FALSE,
+		),
+		'time' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'int',
+		  'not null' => FALSE,
+		),
+		'hits' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'int',
+		  'size' => 'tiny',
+		  'not null' => FALSE,
+		),
+		'views' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'int',
+		  'size' => 'tiny',
+		  'not null' => FALSE,
+		),
+		'researcher_defined_name' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'varchar',
+		  'length' => '255',
+		  'not null' => FALSE,
+		),
+		'researcher_defined_description' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'varchar',
+		  'length' => '255',
+		  'not null' => FALSE,
+		),
+		'researcher_defined_measurement' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'varchar',
+		  'length' => '255',
+		  'not null' => FALSE,
+		),
+		'disqualifying' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'varchar',
+		  'length' => '255',
+		  'not null' => FALSE,
+		),
+	  ),
+	  'primary key' => array('id'),
+	);
+
+	$schema['weblabux_page_sets'] = array(
+	  'description' => 'TODO: please describe this table!',
+	  'fields' => array(
+		'id' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'int',
+		  'not null' => TRUE,
+		),
+		'measured_variable_id' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'int',
+		  'not null' => TRUE,
+		),
+		'url' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'varchar',
+		  'length' => '2048',
+		  'not null' => FALSE,
+		),
+		'node_id' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'int',
+		  'not null' => FALSE,
+		),
+	  ),
+	  'primary key' => array('id'),
+	);
+
+	$schema['weblabux_participants'] = array(
+	  'description' => 'TODO: please describe this table!',
+	  'fields' => array(
+		'id' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'serial',
+		  'not null' => TRUE,
+		),
+		'session_id' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'int',
+		  'size' => 'big',
+		  'not null' => TRUE,
+		),
+		'guid' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'int',
+		  'not null' => TRUE,
+		),
+		'user_id' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'int',
+		  'not null' => TRUE,
+		),
+	  ),
+	  'primary key' => array('id'),
+	);
+
+	$schema['weblabux_pathdata'] = array(
+	  'description' => 'TODO: please describe this table!',
+	  'fields' => array(
+		'id' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'serial',
+		  'size' => 'big',
+		  'not null' => TRUE,
+		),
+		'session_id' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'int',
+		  'size' => 'big',
+		  'not null' => TRUE,
+		),
+		'from_url' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'varchar',
+		  'length' => '2048',
+		  'not null' => TRUE,
+		),
+		'to_url' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'varchar',
+		  'length' => '2048',
+		  'not null' => TRUE,
+		),
+		'link_type' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'int',
+		  'not null' => TRUE,
+		),
+		'time_stamp' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'int',
+		  'not null' => TRUE,
+		),
+		'guid' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'int',
+		  'not null' => TRUE,
+		),
+		'from_title' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'varchar',
+		  'length' => '255',
+		  'not null' => FALSE,
+		),
+	  ),
+	  'primary key' => array('id'),
+	);
+
+	$schema['weblabux_protocol_steps'] = array(
+	  'description' => 'TODO: please describe this table!',
+	  'fields' => array(
+		'id' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'serial',
+		  'not null' => TRUE,
+		),
+		'study_id' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'int',
+		  'not null' => TRUE,
+		),
+		'number' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'int',
+		  'size' => 'tiny',
+		  'not null' => TRUE,
+		),
+		'node_id' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'int',
+		  'not null' => TRUE,
+		),
+		'timer' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'int',
+		  'not null' => TRUE,
+		),
+	  ),
+	  'primary key' => array('id'),
+	);
+
+	$schema['weblabux_sessions'] = array(
+	  'description' => 'TODO: please describe this table!',
+	  'fields' => array(
+		'id' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'serial',
+		  'size' => 'big',
+		  'not null' => TRUE,
+		),
+		'instance_id' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'int',
+		  'not null' => TRUE,
+		),
+		'browser_data_guid' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'int',
+		  'not null' => TRUE,
+		),
+		'browser_data_browser_type' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'varchar',
+		  'length' => '255',
+		  'not null' => TRUE,
+		),
+		'browser_data_browser_version' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'varchar',
+		  'length' => '255',
+		  'not null' => TRUE,
+		),
+		'browser_data_os' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'varchar',
+		  'length' => '255',
+		  'not null' => TRUE,
+		),
+		'browser_data_resolution' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'varchar',
+		  'length' => '255',
+		  'not null' => TRUE,
+		),
+		'browser_data_language' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'varchar',
+		  'length' => '255',
+		  'not null' => TRUE,
+		),
+		'browser_data_country' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'varchar',
+		  'length' => '255',
+		  'not null' => TRUE,
+		),
+		'browser_data_ip' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'varchar',
+		  'length' => '255',
+		  'not null' => TRUE,
+		),
+		'study_condition' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'int',
+		  'not null' => TRUE,
+		),
+	  ),
+	  'primary key' => array('id'),
+	);
+
+	$schema['weblabux_studies'] = array(
+	  'description' => 'TODO: please describe this table!',
+	  'fields' => array(
+		'id' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'serial',
+		  'not null' => TRUE,
+		),
+		'name' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'varchar',
+		  'length' => '255',
+		  'not null' => TRUE,
+		),
+		'date_created' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'int',
+		  'not null' => TRUE,
+		),
+		'description' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'varchar',
+		  'length' => '255',
+		  'not null' => TRUE,
+		),
+		'date_modified' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'int',
+		  'not null' => FALSE,
+		),
+	  ),
+	  'primary key' => array('id'),
+	);
+
+	$schema['weblabux_studies_notes'] = array(
+	  'description' => 'TODO: please describe this table!',
+	  'fields' => array(
+		'idwlux_notes' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'serial',
+		  'not null' => TRUE,
+		),
+		'study_id' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'int',
+		  'not null' => TRUE,
+		),
+		'user_id' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'int',
+		  'not null' => TRUE,
+		),
+		'title' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'varchar',
+		  'length' => '255',
+		  'not null' => TRUE,
+		),
+		'content' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'varchar',
+		  'length' => '255',
+		  'not null' => TRUE,
+		),
+		'date_created' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'int',
+		  'not null' => TRUE,
+		),
+		'date_modified' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'int',
+		  'not null' => FALSE,
+		),
+	  ),
+	  'primary key' => array('idwlux_notes'),
+	);
+
+	$schema['weblabux_submissions'] = array(
+	  'description' => 'TODO: please describe this table!',
+	  'fields' => array(
+		'id' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'int',
+		  'not null' => TRUE,
+		),
+		'participant_id' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'int',
+		  'not null' => TRUE,
+		),
+		'measured_variable_id' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'int',
+		  'not null' => TRUE,
+		),
+		'guid' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'int',
+		  'not null' => TRUE,
+		),
+		'content' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'varchar',
+		  'length' => '255',
+		  'not null' => TRUE,
+		),
+		'disqualifying' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'int',
+		  'size' => 'tiny',
+		  'not null' => TRUE,
+		),
+	  ),
+	  'primary key' => array('id'),
+	);
+
+	$schema['weblabux_surveydata'] = array(
+	  'description' => 'TODO: please describe this table!',
+	  'fields' => array(
+		'id' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'serial',
+		  'size' => 'big',
+		  'not null' => TRUE,
+		),
+		'session_id' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'int',
+		  'size' => 'big',
+		  'not null' => TRUE,
+		),
+		'guid' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'int',
+		  'not null' => TRUE,
+		),
+		'submission_id' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'int',
+		  'not null' => TRUE,
+		),
+	  ),
+	  'primary key' => array('id'),
+	);
+
+	$schema['weblabux_webform_measured_variables'] = array(
+	  'description' => 'TODO: please describe this table!',
+	  'fields' => array(
+		'id' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'int',
+		  'not null' => TRUE,
+		),
+		'id_measured_variable' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'int',
+		  'not null' => TRUE,
+		),
+		'id_webform_measured_variable' => array(
+		  'description' => 'TODO: please describe this field!',
+		  'type' => 'int',
+		  'not null' => TRUE,
+		),
+	  ),
+	  'primary key' => array('id'),
+	);
+
+	return $schema;
+}
+
+function weblabux_install() {
+	$t = get_t();
+	// Ensure the forum node type is available.
+	node_types_rebuild();
+	//$types = node_type_get_types();
+	//node_add_body_field($types['browseurl']);
+  
+	// define the content type as an array (same as in hook_node_info())
+	$browseurl = array(
+		'type' => 'browseurl',
+		'name' => $t('BrowseURL'),
+		'base' => 'node_content',
+		'description' => $t('WebLabUX study site and stylesheets.'),
+		'body_label' => $t('BrowseURL Description'),
+		'promote' => 0,
+		'status' => 1,
+		'comment' => 0,
+	);
+	
+	$landingpage = array(
+		'type' => 'landingpage',
+		'name' => $t('Landing Page'),
+		'base' => 'node_content',
+		'description' => $t('WebLabUX assign condition and start tracking.'),
+		'body_label' => $t('Landing Page Description'),
+		'promote' => 0,
+		'status' => 1,
+		'comment' => 0,
+	);
+	
+	$content_type_browseurl = node_type_set_defaults($browseurl);
+	$content_type_landingpage = node_type_set_defaults($landingpage);
+	
+	// add the default body field to the content type, if needed
+	node_add_body_field($content_type_landingpage, 'Body');
+	
+	node_type_save($content_type_browseurl);
+	node_type_save($content_type_landingpage);
+ 
+	foreach (_weblabux_installed_fields() as $field) {
+		field_create_field($field);
+	}
+ 
+	foreach (_weblabux_installed_instances() as $instance) {
+		$instance['entity_type'] = 'node'; 
+		$instance['bundle'] = 'browseurl'; 
+		field_create_instance($instance);
+	}
+}
+ 
+function _weblabux_installed_fields() {
+	$t = get_t();
+	return array(
+		'field_url' => array(
+			'field_name' => 'field_url',
+			'label'       => $t('Browse URL'),
+			'cardinality'  => 1,
+			'type'        => 'text',
+		),
+
+		'field_stylesheets' => array(
+			'field_name' => 'field_stylesheets',
+			'label'       => $t('Stylesheets'),
+			'cardinality'  => 1,
+			'type'        => 'text_long',
+		),
+	);
+}
+function _weblabux_installed_instances() {
+  $t = get_t();
+  return array( 
+	'field_url' => array(
+      'field_name'  => 'field_url',
+      'label'       => $t('Browse URL'),
+      'cardinality' => 1,
+      'widget'      => array(
+        'type'       => 'text_textfield',
+        'settings'   => array('size' => 160),
+      ),
+    ),
+	'field_stylesheets' => array(
+      'field_name'  => 'field_stylesheets',
+      'label'       => $t('Stylesheets'),
+      'cardinality' => 1,
+      'widget'      => array(
+        'type'       => 'text_textarea',
+        'settings'   => array('rows' => 6),
+      ),
+    ),
+  );
+}
+ 
+function weblabux_uninstall() {
+	$sql = 'SELECT nid FROM {node} n WHERE n.type = :type';
+	$result = db_query($sql, array(':type' => 'browseurl'));
+	$nids = array();
+	foreach ($result as $row) {
+		$nids[] = $row->nid;
+	}
+ 
+	// Delete all the nodes at once
+	node_delete_multiple($nids);
+	/*
+	//deletes comments, if any?
+	$instance = array('field_name' => 'comment_body','bundle' => 'browseurl','entity_type' => 'comment');
+	field_delete_instance($instance);
+
+	//deletes body text, if any
+	$instance = array('field_name' => 'body','bundle' => 'browseurl','entity_type' => 'node');
+	field_delete_instance($instance);
+	*/
+	$fields = array_keys(_weblabux_installed_fields());
+	foreach ($fields as $field) {
+		field_delete_field($field);
+	}
+
+	// Purge all field infromation
+	field_purge_batch(1000);
+}
+?>

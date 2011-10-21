@@ -1,0 +1,12 @@
+<?php
+// Implementation of hook_form_alter().
+function webform_weblabux_form_alter( &$form, &$form_state, $form_id ) {
+	// only webform modules
+	if ( substr ( $form_id, 0, 20 ) == 'webform_client_form_')
+	{
+		// assign the weblabux session id
+		$form['submitted']['session_id']['#value'] = $_SESSION['session_id'];
+		// clear it
+		unset ($_SESSION['session_id']);
+	}
+}
