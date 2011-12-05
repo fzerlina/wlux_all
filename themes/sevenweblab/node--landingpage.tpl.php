@@ -1,7 +1,3 @@
-<p style="background: #DDEE99; color:black; padding:15px">
-	Task: Browse this site for 10 to 15 minutes, learning as much as you can to prepare for your upcoming summer job as a park tour guide.
-</p>
-
 <?php
 	/*
 	list($microseconds,$seconds) = explode(' ',microtime());
